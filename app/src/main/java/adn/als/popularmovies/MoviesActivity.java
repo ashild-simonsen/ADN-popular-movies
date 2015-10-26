@@ -1,5 +1,6 @@
 package adn.als.popularmovies;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,6 +30,8 @@ public class MoviesActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent i = new Intent(this, PreferenceActivity.class);
+            startActivity(i);
             return true;
         }
 
