@@ -1,0 +1,14 @@
+<resources>
+    <!--
+    TODO: This application needs an API key for themoviedb.org
+
+    To get a API key you ned an account at themoviedb.org.
+    If you don’t already have an account, you will need to create one here:
+    https://www.themoviedb.org/account/signup
+    -->
+
+    <string name="themoviedb_api_key" translatable="false" templateMergeStrategy="preserve">
+        YOUR_KEY_HERE
+    </string>
+
+</resources>
