@@ -11,11 +11,13 @@ public class MoviesPreferenceFragment extends PreferenceFragment implements Shar
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         addPreferencesFromResource(R.xml.preferences_movies);
         updateSortedBySummary();
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-    }
 
+    }
+    
     @Override
     public void onResume() {
         super.onResume();
@@ -34,5 +36,11 @@ public class MoviesPreferenceFragment extends PreferenceFragment implements Shar
             ListPreference listPreferece = (ListPreference) pref;
             listPreferece.setSummary(getString(R.string.preferences_sorting_sorted_by) + listPreferece.getEntry().toString().toLowerCase());
         }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
     }
 }
