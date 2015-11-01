@@ -1,32 +1,39 @@
 package adn.als.popularmovies;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
+import java.util.ArrayList;
 
-import java.util.Objects;
+public class MoviesFragment extends Fragment {
 
-public class MoviesFragment extends Fragment{
+    private MovieAdapter movieAdapter;
+    private GridView moviesListView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        DownloadMoviesDataTask downloadMoviesDataTask = new DownloadMoviesDataTask(this.getActivity().getApplicationContext());
+        DownloadMoviesDataTask downloadMoviesDataTask = new DownloadMoviesDataTask(this.getActivity().getApplicationContext(), this);
         downloadMoviesDataTask.execute("");
 
-
         View view = inflater.inflate(R.layout.fragment_movies, container, false);
+        moviesListView = (GridView)view.findViewById(R.id.MoviesGrid);
+
         return view;
+    }
+
+    public void UpdateAdapter(ArrayList<Movie> movieList){
+
+        if(movieAdapter == null){
+            movieAdapter = new MovieAdapter(getActivity(),R.layout.list_item_movie, movieList);
+            moviesListView.setAdapter(movieAdapter);
+        }else{
+            movieAdapter.addAll(movieList);
+            movieAdapter.notifyDataSetChanged();
+        }
     }
 }
