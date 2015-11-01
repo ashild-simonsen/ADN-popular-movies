@@ -11,4 +11,13 @@
         YOUR_KEY_HERE
     </string>
 
+    <!--URLs-->
+    <string name="movielist_base_url" translatable="false" templateMergeStrategy="preserve">http://api.themoviedb.org/3/discover/movie?</string>
+    <string name="movielist_param_sort_by" translatable="false" templateMergeStrategy="preserve">sort_by</string>
+    <string name="movielist_param_value_sort_by_popularity" translatable="false" templateMergeStrategy="preserve">popularity.desc</string>
+    <string name="movielist_param_value_sort_by_rating" translatable="false" templateMergeStrategy="preserve">vote_average.desc</string>
+    <string name="movielist_param_page" translatable="false" templateMergeStrategy="preserve">page</string>
+    <string name="movielist_param_api_key" translatable="false" templateMergeStrategy="preserve">api_key</string>
+    <string name="movie_base_url" translatable="false" templateMergeStrategy="preserve">http://image.tmdb.org/t/p/w342</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package adn.als.popularmovies;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
@@ -89,18 +90,15 @@ public class DownloadMoviesDataTask extends AsyncTask {
         int pageNo = 1;
         boolean sortingByRating = true;
 
-        final String BASE_URL = "http://api.themoviedb.org/3/discover/movie?";
-        final String PARAM_SORT_BY = "sort_by";
-        final String PARAM_API_KEY = "api_key";
-        final String SORT_BY_POPULARITY = "popularity.desc";
 
-        final String SORT_BY_RATING = "vote_average.desc";
-        final String PARAM_PAGE_NO = "page";
+        Resources res = context.getResources();
 
-        Uri uri = Uri.parse(BASE_URL).buildUpon()
-                .appendQueryParameter(PARAM_PAGE_NO, String.valueOf(pageNo))
-                .appendQueryParameter(PARAM_SORT_BY, sortingByRating ? SORT_BY_RATING : SORT_BY_POPULARITY)
-                .appendQueryParameter(PARAM_API_KEY, context.getResources().getString(R.string.themoviedb_api_key))
+        Uri uri = Uri.parse(res.getString(R.string.movielist_base_url)).buildUpon()
+                .appendQueryParameter(res.getString(R.string.movielist_param_page), String.valueOf(pageNo))
+                .appendQueryParameter(res.getString(R.string.movielist_param_sort_by),
+                                        sortingByRating ? res.getString(R.string.movielist_param_value_sort_by_rating)
+                                                        : res.getString(R.string.movielist_param_value_sort_by_popularity))
+                .appendQueryParameter(res.getString(R.string.movielist_param_api_key), res.getString(R.string.themoviedb_api_key))
                 .build();
 
         return new URL(uri.toString());

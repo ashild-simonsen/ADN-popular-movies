@@ -35,14 +35,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
         ImageView moviePoster = (ImageView) convertView.findViewById(R.id.MoviePoster);
         Movie movie = movieList.get(position);
-
-
-        //TEMP
-        String MOVIE_URL="http://image.tmdb.org/t/p/w342";
-
-        String posterImageURL = MOVIE_URL+movie.getPosterPath();
-
-        Log.d(this.getClass().toString(), "posterImageURL: " + posterImageURL);
+        String posterImageURL = context.getResources().getString(R.string.movie_base_url) + movie.getPosterPath();
 
         try {
             if(!posterImageURL.isEmpty()){
