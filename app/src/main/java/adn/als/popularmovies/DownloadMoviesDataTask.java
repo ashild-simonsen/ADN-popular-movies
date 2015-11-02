@@ -154,6 +154,7 @@ public class DownloadMoviesDataTask extends AsyncTask {
             movie.setOverview(jsonMovie.getString("overview"));
             movie.setPosterPath(jsonMovie.getString("poster_path"));
             movie.setPopularity(jsonMovie.getDouble("popularity"));
+            movie.setReleaseDate(jsonMovie.getString("release_date"));
             movie.setTitle(jsonMovie.getString("title"));
             movie.setVideo(jsonMovie.getBoolean("video"));
             movie.setVoteAverage(jsonMovie.getDouble("vote_average"));

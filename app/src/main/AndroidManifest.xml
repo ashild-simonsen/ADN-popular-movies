@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MovieDetailsActivity">
+        </activity>
+        <activity
             android:name=".PreferenceActivity"
             android:label="@string/action_settings" >
         </activity>

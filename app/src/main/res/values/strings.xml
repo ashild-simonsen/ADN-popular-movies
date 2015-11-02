@@ -9,4 +9,6 @@
     <string name="preferences_sorting_default_value_popular">Popular</string>
     <string name="preferences_sorting_location_key">key_preferences_sorting</string>
 
+    <string name="movie_details_intent_extra_movie">movie_details_intent_extra_movie</string>
+
 </resources>

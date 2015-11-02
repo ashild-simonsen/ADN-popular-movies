@@ -1,31 +1,88 @@
 package adn.als.popularmovies;
 
-import java.util.Date;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Movie {
+public class Movie implements Parcelable {
 
-    private boolean adult;
+    private String adult;
     private String backdropPath;
     private int[] genreIds;
     private int id;
     private String originalLanguage;
     private String originalTitle;
     private String overview;
-    private Date releaseDate;
+    private String releaseDate;
     private String posterPath;
     private double popularity;
     private String title;
-    private boolean video;
+    private String video;
     private double voteAverage;
     private int voteCount;
 
 
+    protected Movie(Parcel in) {
+        adult = in.readString();
+        backdropPath = in.readString();
+        genreIds = in.createIntArray();
+        id = in.readInt();
+        originalLanguage = in.readString();
+        originalTitle = in.readString();
+        overview = in.readString();
+        releaseDate = in.readString();
+        posterPath = in.readString();
+        popularity = in.readDouble();
+        title = in.readString();
+        video = in.readString();
+        voteAverage = in.readDouble();
+        voteCount = in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(String.valueOf(adult));
+        dest.writeString(backdropPath);
+        dest.writeIntArray(genreIds);
+        dest.writeInt(id);
+        dest.writeString(originalLanguage);
+        dest.writeString(originalTitle);
+        dest.writeString(overview);
+        dest.writeString(releaseDate);
+        dest.writeString(posterPath);
+        dest.writeDouble(popularity);
+        dest.writeString(title);
+        dest.writeString(String.valueOf(video));
+        dest.writeDouble(voteAverage);
+        dest.writeInt(voteCount);
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
+
+    public Movie() {
+
+    }
+
     public boolean isAdult() {
-        return adult;
+        return adult == "true";
     }
 
     public void setAdult(boolean adult) {
-        this.adult = adult;
+        this.adult = adult ? "true":"false";
     }
 
     public String getBackdropPath() {
@@ -76,11 +133,11 @@ public class Movie {
         this.overview = overview;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -108,12 +165,11 @@ public class Movie {
         this.title = title;
     }
 
-    public boolean isVideo() {
-        return video;
+    public boolean isVideo() { return video == "true" ? true:false;
     }
 
     public void setVideo(boolean video) {
-        this.video = video;
+        this.video = video ? "true": "false";
     }
 
     public double getVoteAverage() {
@@ -131,4 +187,6 @@ public class Movie {
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
     }
+
+
 }

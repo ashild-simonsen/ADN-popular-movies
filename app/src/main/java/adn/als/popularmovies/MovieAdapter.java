@@ -1,6 +1,7 @@
 package adn.als.popularmovies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,27 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         }catch (Exception ex){
             Log.e(this.getClass().toString(), "Problem loading the poster image for movie." + ex.getMessage());
         }
+
+        convertView.setId(movie.getId());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Movie movie = null;
+                Integer movieId = v.getId();
+                for (int i = 0; i < movieList.size(); i++) {
+                    if(movieId.equals(movieList.get(i).getId())){
+                        movie = movieList.get(i);
+                        break;
+                    }
+                }
+                if (movie != null) {
+                    Intent movieDetailsIntent = new Intent(context, MovieDetailsActivity.class);
+                    movieDetailsIntent.putExtra(context.getString(R.string.movie_details_intent_extra_movie), movie);
+                    v.getContext().startActivity(movieDetailsIntent);
+                }
+            }
+        });
 
         return convertView;
     }
