@@ -10,5 +10,9 @@
     <string name="preferences_sorting_location_key">key_preferences_sorting</string>
 
     <string name="movie_details_intent_extra_movie">movie_details_intent_extra_movie</string>
+    <string name="movie_details_average_vote_text">Vote average:</string>
+    <string name="movie_details_released_text">Released:</string>
+    <string name="movie_details_original_title_text">"Original title:</string>
+
 
 </resources>

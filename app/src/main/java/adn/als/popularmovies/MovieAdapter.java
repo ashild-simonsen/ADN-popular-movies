@@ -42,9 +42,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
                 Picasso.with(getContext())
                     .load(posterImageURL)
-                    .resize(100, 100)
                     .into(moviePoster);
-
             }
         }catch (Exception ex){
             Log.e(this.getClass().toString(), "Problem loading the poster image for movie." + ex.getMessage());

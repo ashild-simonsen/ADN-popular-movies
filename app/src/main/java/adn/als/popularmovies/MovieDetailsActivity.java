@@ -21,28 +21,20 @@ public class MovieDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_details);
 
         this.movie = (Movie) getIntent().getExtras().get(getString(R.string.movie_details_intent_extra_movie));
-        this.setTitle(movie.getTitle());
 
+        initMovieTitle();
         initMoviePoster();
-        initMovieDetails();
+        initOriginalTitle();
+        initReleaseDate();
+        initVoteAverage();
+        initPlotSynopsis();
     }
 
-    private void initMovieDetails() {
+    private void initMovieTitle(){
+        this.setTitle(movie.getTitle());
 
         TextView movieTitle = (TextView)findViewById(R.id.MovieTitle);
         movieTitle.setText(movie.getTitle());
-
-        TextView movieOriginalTitle = (TextView)findViewById(R.id.MovieOrigionalTitle);
-        movieOriginalTitle.setText("Original title: " + movie.getOriginalTitle());
-
-        TextView releaseDate = (TextView)findViewById(R.id.MovieReleaseDate);
-        releaseDate.setText("Released: " + movie.getReleaseDate());
-
-        TextView voteAverage = (TextView)findViewById(R.id.MovieVoteAverage);
-        voteAverage.setText("Vote average: " + String.valueOf(movie.getVoteAverage()));
-
-        TextView plotSynopsis = (TextView)findViewById(R.id.MoviePlotSynopis);
-        plotSynopsis.setText(movie.getOverview());
     }
 
     private void initMoviePoster() {
@@ -54,35 +46,39 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
                 Picasso.with(getApplicationContext())
                         .load(posterImageURL)
-                        .resize(100, 100)
                         .into(moviePoster);
-
             }
         }catch (Exception ex){
             Log.e(this.getClass().toString(), "Problem loading the poster image for movie." + ex.getMessage());
         }
     }
 
+    private void initOriginalTitle(){
+        TextView movieOriginalTitleText = (TextView)findViewById(R.id.MovieOrigionalTitleText);
+        movieOriginalTitleText.setText(getString(R.string.movie_details_original_title_text));
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_movie_details, menu);
-        return true;
+        TextView movieOriginalTitle = (TextView)findViewById(R.id.MovieOrigionalTitle);
+        movieOriginalTitle.setText(movie.getOriginalTitle());
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    private void initReleaseDate(){
+        TextView releaseDateText = (TextView)findViewById(R.id.MovieReleaseDateText);
+        releaseDateText.setText(getString(R.string.movie_details_released_text));
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        TextView releaseDate = (TextView)findViewById(R.id.MovieReleaseDate);
+        releaseDate.setText(movie.getReleaseDate());
+    }
 
-        return super.onOptionsItemSelected(item);
+    private void initVoteAverage(){
+        TextView voteAverageText = (TextView)findViewById(R.id.MovieVoteAverageText);
+        voteAverageText.setText(getString(R.string.movie_details_average_vote_text));
+
+        TextView voteAverage = (TextView)findViewById(R.id.MovieVoteAverage);
+        voteAverage.setText(String.valueOf(movie.getVoteAverage()));
+    }
+
+    private void initPlotSynopsis(){
+        TextView plotSynopsis = (TextView)findViewById(R.id.MoviePlotSynopis);
+        plotSynopsis.setText(movie.getOverview());
     }
 }
