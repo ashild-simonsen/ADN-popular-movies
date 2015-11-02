@@ -1,9 +1,11 @@
 package adn.als.popularmovies;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -40,7 +42,6 @@ public class DownloadMoviesDataTask extends AsyncTask {
 
     @Override
     protected String doInBackground(Object[] param) {
-
         String jsonResult = fetchMovieList();
         movieList = parseJsonToMovieList(jsonResult);
         return jsonResult;
@@ -88,8 +89,11 @@ public class DownloadMoviesDataTask extends AsyncTask {
 
         //temp:
         int pageNo = 1;
-        boolean sortingByRating = true;
 
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        String sortOrderPref = sharedPref.getString(context.getString(R.string.preferences_sorting_location_key),
+                                                    context.getString(R.string.preferences_sorting_default_value_popular));
+        boolean sortingByRating = sortOrderPref.equals(context.getString(R.string.preferences_sorting_default_value_popular)) ? false:true;
 
         Resources res = context.getResources();
 
