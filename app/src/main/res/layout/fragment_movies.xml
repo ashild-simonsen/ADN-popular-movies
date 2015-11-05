@@ -10,4 +10,11 @@
         android:layout_height="match_parent"
         android:numColumns="auto_fit"/>
 
+    <ProgressBar
+        android:id="@+id/progressBarLoadingMovies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        style="@android:style/Widget.ProgressBar.Horizontal"/>
+
 </FrameLayout>

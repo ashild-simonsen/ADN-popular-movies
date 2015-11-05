@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-
+import android.widget.ProgressBar;
 import java.util.ArrayList;
 
 public class MoviesFragment extends Fragment {
@@ -16,11 +16,13 @@ public class MoviesFragment extends Fragment {
     private MovieAdapter movieAdapter;
     private GridView moviesListView;
     private String currentSorting = "";
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movies, container, false);
         moviesListView = (GridView)view.findViewById(R.id.MoviesGrid);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBarLoadingMovies);
         return view;
     }
 
@@ -38,8 +40,8 @@ public class MoviesFragment extends Fragment {
 
         if(!currentSorting.equals(sortOrderPref)){
             currentSorting = sortOrderPref;
-            DownloadMoviesDataTask downloadMoviesDataTask = new DownloadMoviesDataTask(this.getActivity().getApplicationContext(), this);
-            downloadMoviesDataTask.execute("");
+            DownloadMoviesDataTask downloadMoviesDataTask = new DownloadMoviesDataTask(this.getActivity().getApplicationContext(), this, progressBar);
+            downloadMoviesDataTask.execute();
         }
     }
 

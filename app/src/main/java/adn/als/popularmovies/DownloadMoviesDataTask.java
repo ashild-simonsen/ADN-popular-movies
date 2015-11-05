@@ -8,6 +8,8 @@ import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,28 +25,42 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class DownloadMoviesDataTask extends AsyncTask {
+public class DownloadMoviesDataTask extends AsyncTask<Void, Integer, Void> {
 
     private BufferedReader reader = null;
     private Context context = null;
     private MoviesFragment moviesFragment;
     private ArrayList<Movie> movieList;
+    private ProgressBar progressBar;
+    private int progressStatusDownload;
 
-    public DownloadMoviesDataTask(Context context, MoviesFragment moviesFragment){
+    public DownloadMoviesDataTask(Context context, MoviesFragment moviesFragment, ProgressBar progressBar){
         this.context = context;
         this.moviesFragment = moviesFragment;
+        this.progressBar = progressBar;
     }
 
     @Override
-    protected void onPostExecute(Object o) {
-        moviesFragment.UpdateAdapter(movieList);
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressStatusDownload = 0;
+        progressBar.setProgress(progressStatusDownload);
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
-    protected String doInBackground(Object[] param) {
+    protected Void doInBackground(Void... params) {
         String jsonResult = fetchMovieList();
+
+        progressStatusDownload = 50;
+        publishProgress(progressStatusDownload);
+
         movieList = parseJsonToMovieList(jsonResult);
-        return jsonResult;
+
+        progressStatusDownload = 100;
+        publishProgress(progressStatusDownload);
+
+        return null;
     }
 
     @Nullable
@@ -163,5 +179,20 @@ public class DownloadMoviesDataTask extends AsyncTask {
             e.printStackTrace();
         }
         return movie;
+    }
+
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+        super.onProgressUpdate(values);
+        if (this.progressBar != null && values != null) {
+            progressBar.setProgress(values[0]);
+        }
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        moviesFragment.UpdateAdapter(movieList);
+        progressBar.setVisibility(View.GONE);
     }
 }
