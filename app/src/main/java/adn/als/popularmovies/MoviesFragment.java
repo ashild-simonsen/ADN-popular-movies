@@ -22,7 +22,7 @@ public class MoviesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movies, container, false);
         moviesListView = (GridView)view.findViewById(R.id.MoviesGrid);
-        progressBar = (ProgressBar) view.findViewById(R.id.progressBarLoadingMovies);
+        progressBar = (ProgressBar)view.findViewById(R.id.progressBarLoadingMovies);
         return view;
     }
 

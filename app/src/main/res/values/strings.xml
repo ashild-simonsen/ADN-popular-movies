@@ -12,7 +12,9 @@
     <string name="movie_details_intent_extra_movie">movie_details_intent_extra_movie</string>
     <string name="movie_details_average_vote_text">Vote average:</string>
     <string name="movie_details_released_text">Released:</string>
+    <string name="movie_release_date_unknown">Unknown</string>
     <string name="movie_details_original_title_text">"Original title:</string>
 
+    <string name="trailers_header">Trailers</string>
 
 </resources>
