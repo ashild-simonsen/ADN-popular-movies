@@ -99,7 +99,7 @@ public class MovieDetailsFragment extends Fragment {
 
     private void initPlotSynopsis(){
         TextView plotSynopsis = (TextView)this.view.findViewById(R.id.MoviePlotSynopis);
-        plotSynopsis.setText(movie.getOverview());
+        plotSynopsis.setText(!movie.getOverview().equals("null") ? movie.getOverview():"");
     }
 
     private void initTrailers(){
