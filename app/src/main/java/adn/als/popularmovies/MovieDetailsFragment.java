@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
 
 
@@ -44,6 +44,7 @@ public class MovieDetailsFragment extends Fragment {
         this.view = inflater.inflate(R.layout.fragment_movie_details, container, false);
         initMovieTitle();
         initMoviePoster();
+        initFavoriteToggleButton();
         initOriginalTitle();
         initReleaseDate();
         initVoteAverage();
@@ -71,6 +72,23 @@ public class MovieDetailsFragment extends Fragment {
         }catch (Exception ex){
             Log.e(this.getClass().toString(), "Problem loading the poster image for movie." + ex.getMessage());
         }
+    }
+
+    private void initFavoriteToggleButton(){
+
+        //TEMP:
+        movie.setFavorite(true);
+
+        ImageView favoriteIcon = (ImageView)this.view.findViewById(R.id.FavoriteIcon);
+        favoriteIcon.setImageResource(movie.isFavorite() ? R.drawable.ic_favorite_yellow_24dp : R.drawable.ic_favorite_border_white_24dp);
+
+        favoriteIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movie.setFavorite(!movie.isFavorite());
+                ((ImageView) v).setImageResource(movie.isFavorite() ? R.drawable.ic_favorite_yellow_24dp : R.drawable.ic_favorite_border_white_24dp);
+            }
+        });
     }
 
     private void initOriginalTitle(){

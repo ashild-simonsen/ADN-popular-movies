@@ -56,7 +56,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
                 Movie movie = null;
                 Integer movieId = v.getId();
                 for (int i = 0; i < movieList.size(); i++) {
-                    if(movieId.equals(movieList.get(i).getId())){
+                    if (movieId.equals(movieList.get(i).getId())) {
                         movie = movieList.get(i);
                         break;
                     }
@@ -68,6 +68,12 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
                 }
             }
         });
+
+        ///TEMP:
+        movie.setFavorite(true);
+
+        ImageView favoriteIcon = (ImageView)convertView.findViewById(R.id.FavoriteIcon);
+        favoriteIcon.setVisibility(movie.isFavorite() ? View.VISIBLE:View.INVISIBLE);
 
         return convertView;
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,6 +8,15 @@
         android:id="@+id/MoviePoster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="1dp" />
+        android:padding="1dp"/>
+    
+    <ImageView
+        android:id="@+id/FavoriteIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:paddingRight="@dimen/movielist_favorite_icon_padding_right"
+        android:paddingTop="@dimen/movielist_favorite_icon_padding_top"
+        android:src="@drawable/ic_favorite_yellow_24dp"/>
 
-</LinearLayout>
+</FrameLayout>

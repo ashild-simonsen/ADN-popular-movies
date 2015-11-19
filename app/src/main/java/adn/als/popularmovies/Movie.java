@@ -19,6 +19,7 @@ public class Movie implements Parcelable {
     private String video;
     private double voteAverage;
     private int voteCount;
+    private String favorite;
 
 
     protected Movie(Parcel in) {
@@ -36,6 +37,7 @@ public class Movie implements Parcelable {
         video = in.readString();
         voteAverage = in.readDouble();
         voteCount = in.readInt();
+        favorite = in.readString();
     }
 
     @Override
@@ -59,6 +61,7 @@ public class Movie implements Parcelable {
         dest.writeString(String.valueOf(video));
         dest.writeDouble(voteAverage);
         dest.writeInt(voteCount);
+        dest.writeString(favorite);
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -77,13 +80,9 @@ public class Movie implements Parcelable {
 
     }
 
-    public boolean isAdult() {
-        return adult == "true";
-    }
+    public boolean isAdult() { return adult == "true"; }
 
-    public void setAdult(boolean adult) {
-        this.adult = adult ? "true":"false";
-    }
+    public void setAdult(boolean adult) { this.adult = adult ? "true":"false"; }
 
     public String getBackdropPath() {
         return backdropPath;
@@ -172,9 +171,7 @@ public class Movie implements Parcelable {
         this.video = video ? "true": "false";
     }
 
-    public double getVoteAverage() {
-        return voteAverage;
-    }
+    public double getVoteAverage() {return voteAverage;}
 
     public void setVoteAverage(double voteAverage) {
         this.voteAverage = voteAverage;
@@ -188,5 +185,7 @@ public class Movie implements Parcelable {
         this.voteCount = voteCount;
     }
 
+    public boolean isFavorite() { return favorite == "true" ? true:false; }
 
+    public void setFavorite(boolean favorite) { this.favorite = favorite ? "true":"false"; }
 }

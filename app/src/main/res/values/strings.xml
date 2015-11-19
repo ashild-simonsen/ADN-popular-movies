@@ -16,5 +16,6 @@
     <string name="movie_details_original_title_text">"Original title:</string>
 
     <string name="trailers_header">Trailers</string>
+    <string name="action_favorite">Favorite</string>
 
 </resources>

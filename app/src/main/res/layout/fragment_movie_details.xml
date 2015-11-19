@@ -20,16 +20,35 @@
             android:paddingBottom="@dimen/activity_vertical_margin"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/MovieTitle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/MovieTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:singleLine="false"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:id="@+id/FavoriteIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/movie_details_favorite_toggle_button_height"
+                    android:layout_gravity="right"
+                    android:paddingLeft="1dp"
+                    android:src="@drawable/ic_favorite_yellow_24dp"
+                    android:layout_weight="2"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/MovieOrigionalTitleText"
