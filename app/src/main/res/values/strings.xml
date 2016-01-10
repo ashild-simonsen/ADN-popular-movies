@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">Popular Movies</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_show_movies_by">Show movies by</string>
 
-    <string name="preferences_sorting_id">preferences_sorting</string>
-    <string name="preferences_sorting_label">Sort movies</string>
-    <string name="preferences_sorting_sorted_by">"Movies is sorted by "</string>
-    <string name="preferences_sorting_default_value_popular">Popular</string>
-    <string name="preferences_sorting_location_key">key_preferences_sorting</string>
+    <string name="location_key_preferences_show_movies_by">key_preferences_sorting</string>
+    <!--
+    <string name="preferences_show_movies_by_default_value_popular">Most Popular</string>
+    -->
+    <string name="preferences_option_show_movies_by_popular">Most Popular</string>
+    <string name="preferences_option_show_movies_by_highest_rated">Highest Rated</string>
+    <string name="preferences_option_show_movies_by_favorites">My Favorites</string>
+
 
     <string name="movie_details_intent_extra_movie">movie_details_intent_extra_movie</string>
     <string name="movie_details_average_vote_text">Vote average:</string>
@@ -16,6 +19,5 @@
     <string name="movie_details_original_title_text">"Original title:</string>
 
     <string name="trailers_header">Trailers</string>
-    <string name="action_favorite">Favorite</string>
 
 </resources>

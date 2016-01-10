@@ -5,13 +5,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <FrameLayout
+    <FrameLayout android:id="@+id/MoviesFragment"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <fragment
-            android:id="@+id/moviesFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            class = "adn.als.popularmovies.MoviesFragment"/>
-    </FrameLayout>
+        android:layout_height="match_parent" />
+
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,16 @@ public class MoviesFragment extends Fragment {
     private GridView moviesListView;
     private String currentSorting = "";
     private ProgressBar progressBar;
+
+    public static MoviesFragment newInstance() {
+        MoviesFragment fragment = new MoviesFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public MoviesFragment(){
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,8 +46,8 @@ public class MoviesFragment extends Fragment {
     public void downloadMovies(){
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
-        String sortOrderPref = sharedPref.getString(getString(R.string.preferences_sorting_location_key),
-                                                    getString(R.string.preferences_sorting_default_value_popular));
+        String sortOrderPref = sharedPref.getString(getString(R.string.location_key_preferences_show_movies_by),
+                                                    getString(R.string.preferences_option_show_movies_by_popular));
 
         if(!currentSorting.equals(sortOrderPref)){
             currentSorting = sortOrderPref;

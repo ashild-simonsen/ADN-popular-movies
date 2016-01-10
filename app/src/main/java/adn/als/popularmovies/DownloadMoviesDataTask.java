@@ -107,9 +107,11 @@ public class DownloadMoviesDataTask extends AsyncTask<Void, Integer, Void> {
         int pageNo = 1;
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        String sortOrderPref = sharedPref.getString(context.getString(R.string.preferences_sorting_location_key),
-                                                    context.getString(R.string.preferences_sorting_default_value_popular));
-        boolean sortingByRating = sortOrderPref.equals(context.getString(R.string.preferences_sorting_default_value_popular)) ? false:true;
+        String sortOrderPref = sharedPref.getString(context.getString(R.string.location_key_preferences_show_movies_by),
+                                                    context.getString(R.string.preferences_option_show_movies_by_popular));
+        boolean sortingByRating = sortOrderPref.equals(context.getString(R.string.preferences_option_show_movies_by_highest_rated));
+
+        Log.d(this.getClass().toString(), "sortingByRating: " + sortingByRating);
 
         Resources res = context.getResources();
 

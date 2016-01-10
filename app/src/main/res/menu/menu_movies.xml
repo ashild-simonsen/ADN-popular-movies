@@ -2,14 +2,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_favorite"
-        android:icon="@drawable/ic_favorite_yellow_24dp"
-        android:title="@string/action_favorite"
-        app:showAsAction="always"/>
+    <item android:id="@+id/menu_show_movies_by"
+        android:title="@string/action_show_movies_by"
+        app:showAsAction="always">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/menu_highest_rated" android:title="@string/preferences_option_show_movies_by_highest_rated"  app:showAsAction="never" />
+                <item android:id="@+id/menu_most_popular" android:title="@string/preferences_option_show_movies_by_popular"  app:showAsAction="never" />
+                <item android:id="@+id/menu_my_favorites" android:title="@string/preferences_option_show_movies_by_favorites"  app:showAsAction="never" />
+            </group>
+        </menu>
+    </item>
 </menu>
